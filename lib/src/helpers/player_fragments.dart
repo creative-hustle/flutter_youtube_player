@@ -1,4 +1,5 @@
 import 'package:youtube_player_iframe_plus/youtube_player_iframe_plus.dart';
+import 'dart:developer';
 
 ///
 String youtubeIFrameTag(YoutubePlayerController controller) {
@@ -25,12 +26,18 @@ String youtubeIFrameTag(YoutubePlayerController controller) {
     if (controller.params.playlist.isNotEmpty)
       'playlist': '${controller.params.playlist.join(',')}'
   };
+  if (controller.channelId != null) {
+    params['channel'] = controller.channelId as String;
+  }
   final youtubeAuthority = controller.params.privacyEnhanced
       ? 'www.youtube-nocookie.com'
       : 'www.youtube.com';
+  final embedUrl = controller.channelId != null
+      ? 'embed/live_stream'
+      : 'embed/${controller.initialVideoId}';
   final sourceUri = Uri.https(
     youtubeAuthority,
-    'embed/${controller.initialVideoId}',
+    embedUrl,
     params,
   );
   return '<iframe id="player" type="text/html"'
