@@ -90,7 +90,7 @@ class _MobileYoutubePlayerState extends State<RawYoutubePlayer>
       key: ValueKey(controller.hashCode),
       initialData: InAppWebViewInitialData(
         data: player,
-        baseUrl: WebUri(_baseUrl),
+        baseUrl: WebUri(_baseUrl.path),
         encoding: 'utf-8',
         mimeType: 'text/html',
       ),
