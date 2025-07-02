@@ -25,6 +25,7 @@ apply plugin: 'com.android.application'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
+    namespace "np.com.sarbagyastha.youtube_player_iframe_example"
     compileSdkVersion 32
 
     lintOptions {
